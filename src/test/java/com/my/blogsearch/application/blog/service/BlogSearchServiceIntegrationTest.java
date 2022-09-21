@@ -70,7 +70,6 @@ class BlogSearchServiceIntegrationTest {
     @DisplayName("2-1. 블로그 인기 검색 키워드 조회 - 동시성 테스트")
     @Order(3)
     @Test
-    @Disabled
     void addKeywordCountByThreads() throws InterruptedException {
         // given
         blogSearchRequestDto.setQuery("카카오뱅크");
