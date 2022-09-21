@@ -40,7 +40,8 @@
   * Java, Git  설치
 * 프로젝트 URL 접속 또는 Git Clone
   * https://github.com/ukjae88/blogSearch
-* 프로젝트 루트 경로에 위치한 blogSearch.jar 다운로드 및 실행 (Executable jar)
+* 프로젝트 루트 경로에 위치한 blogSearch.jar 다운로드 및 실행
+  * Executable jar 다운로드 경로 : https://github.com/ukjae88/blogSearch/raw/master/blogSearch.jar
 <pre>
 <code>
 java -jar blogSearch.jar
