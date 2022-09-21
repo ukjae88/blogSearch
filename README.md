@@ -39,13 +39,11 @@
 * 선행조건
   * Java, Git  설치
 * 프로젝트 Git Clone
-  * https://github.com/
-* 프로젝트 실행하기
+  * https://github.com/ukjae88/blogSearch
+* 프로젝트 내 blogSearch.jar 실행하기 (Executable jar)
 <pre>
 <code>
-cd blogSearch
-./gradlew clean build
-java -jar build/libs/blogSearch-0.0.1-SNAPSHOT.jar
+java -jar blogSearch.jar
 </code>
 </pre>
 
