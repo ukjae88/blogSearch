@@ -3,10 +3,7 @@ package com.my.blogsearch.application.blog.service;
 import com.my.blogsearch.application.blog.dto.BlogContentDto;
 import com.my.blogsearch.application.blog.dto.BlogKeywordDto;
 import com.my.blogsearch.application.blog.dto.BlogSearchRequestDto;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -54,7 +51,7 @@ class BlogSearchServiceIntegrationTest {
 
 
     @DisplayName("2. 블로그 인기 검색 키워드 조회")
-    @Order(1)
+    @Order(2)
     @Test
     void addKeywordCount(){
         // given
@@ -71,10 +68,13 @@ class BlogSearchServiceIntegrationTest {
     }
 
     @DisplayName("2-1. 블로그 인기 검색 키워드 조회 - 동시성 테스트")
-    @Order(1)
+    @Order(3)
     @Test
+    @Disabled
     void addKeywordCountByThreads() throws InterruptedException {
         // given
+        blogSearchRequestDto.setQuery("카카오뱅크");
+        
         int numberOfThreads = 10;
         ExecutorService service = Executors.newFixedThreadPool(numberOfThreads);
         CountDownLatch latch = new CountDownLatch(numberOfThreads);
