@@ -16,6 +16,10 @@ import java.util.List;
 public class KaKaoBlogResponse {
     List<BlogDocument> documents;
 
+    public boolean isSuccess() {
+        return documents != null && !documents.isEmpty();
+    }
+
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor

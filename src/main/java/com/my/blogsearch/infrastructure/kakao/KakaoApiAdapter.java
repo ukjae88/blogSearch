@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,14 +19,12 @@ public class KakaoApiAdapter implements BlogSearchApi {
     @Override
     public List<BlogContentDto> searchBlog(BlogSearchRequestDto blogSearchRequestDto) {
         KaKaoBlogResponse response = kakaoApiClient.searchKakaoBlog(blogSearchRequestDto.getQuery(), blogSearchRequestDto.getSort(), blogSearchRequestDto.getPage(), blogSearchRequestDto.getSize()).block();
-        if (response == null)
-            return null;
-
-        List<BlogContentDto> blogs = new ArrayList<>();
-        for (KaKaoBlogResponse.BlogDocument blog : response.getDocuments()) {
-            blogs.add(BlogContentDto.of(blog.getTitle(), blog.getContents(), blog.getUrl(), blog.getDatetime()));
+        if (response != null && response.isSuccess()) {
+            return response.getDocuments().stream()
+                    .map(it -> BlogContentDto.of(it.getTitle(), it.getContents(), it.getUrl(), it.getDatetime()))
+                    .collect(Collectors.toList());
         }
 
-        return blogs;
+        return null;
     }
 }
